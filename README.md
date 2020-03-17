@@ -4,45 +4,45 @@
 ## 简介
 该项目来自业内流行的基于React的集大成框架Ant design pro。公司采用2.1.1版本作为基线版本，后续开发项目，请以当前项目为模板，新建自己的前端项目，禁止在该项目上直接开发业务。
 
-
 ## 使用方式
 在使用该项目之前，请先对整个项目有所了解，请先看[项目说明文档](https://www.yuque.com/simonalong/jishu/war7do)
 
 ## 一、前端创建
-### 1.前端项目设立
-新建自己的前端项目，将当前项目上传上去（或者拷贝上去均可）
+#### 1.创建自己的前端
+去 gitlab http://10.30.30.3 创建一个空项目
 
-### 2.项目安装相关依赖
-请在自己新建的前端项目中安装
-> cd xxxx <br/>
+#### 2.进入ibo-front-base项目
+> cd ibo-front-base
+
+#### 3.切换到master分支
+> git checkout master
+
+#### 4.添加模板项目与自己业务前端项目关联（其中xxx可以为自己的业务名，对应的git为自己创建的git）
+> git remote add origin-xxx ssh://xxxx/xxx.git
+
+#### 5.推送
+> git push -u origin-business master
+
+#### 6.删除模板的这个远端（将自己的远端再删除掉）
+> git remote remove origin-xxx
+
+
+### 2.配置业务
+#### 1.拉取自己的界面新业务
+> git clone ssh://xxxx/xxx.git xxx <br/>
+> cd xxx<br/>
+
+安装前端的依赖
 > npm install <br/>
 
+注意：
+这里安装有点慢，可以采用 npm install -g 这个试试
+
+至此前端已经安装完毕
 ## 二、前端配置
-前端配置这里分为两步：1.配置后端部分，2.添加前端业务
-### 1.配置后端部分
-这里要配置后端host和port。
-在文件config.js中添加自己的后端host
-```javascript
-  proxy: {
-    // 这里是api文件的前缀
-    '/sequence/': {
-      // 后端路径
-      target: 'http://localhost:8080/',
-      changeOrigin: true,
-      // 将api文件的前缀进行替换
-      pathRewrite: { '^/sequence': '' },
-    },
-  }
-```
-其中如何配置后端，请看下面的"项目说明文档"，先对该项目的整体有个了解
+到这里其实就可以去看项目"ibo-robot"中的说明了。在执行前后端生成之后，就可以启动了，先将后端启动，然后启动前端
 
-### 2.添加前端业务
-添加前端业务这里可以采用"front-springboot-generator"可以直接生成前端后端项目。具体的可以看该项目自己的readme.md介绍。
-
-## 三、后端配置
-后端这里可以看项目"front-springboot-generator"的文档介绍和说明
-
-## 四、启动
+## 三、启动前端
 当前后端都配置完成后，启动后端后，启动前端
 > npm run start
 
