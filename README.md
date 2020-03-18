@@ -1,13 +1,10 @@
 
 <h1 align="center">ibo front base</h1>
 
-该项目来自业内流行的基于React的集大成框架Ant design pro。公司采用2.1.1版本作为基线版本，后续开发项目，请以当前项目为模板，新建自己的前端项目，禁止在该项目上直接开发业务。
-
-## 使用方式
-在使用该项目之前，请先对整个项目有所了解，请先看[项目说明文档](https://www.yuque.com/simonalong/jishu/war7do)
+该项目来自业内流行的基于React的集大成框架Ant design pro。公司采用2.1.1版本作为基线版本，后续开发前端项目，请以当前项目为模板进行新建自己的前端项目，禁止在该项目上直接开发业务（操作方式如下）。
 
 ## 一、前端创建
-#### 1.创建自己的前端
+#### 1.创建自己的前端项目
 去 gitlab http://10.30.30.3 创建一个空项目
 
 #### 2.进入ibo-front-base项目
@@ -19,8 +16,8 @@
 #### 4.添加模板项目与自己业务前端项目关联（其中xxx可以为自己的业务名，对应的git为自己创建的git）
 > git remote add origin-xxx ssh://xxxx/xxx.git
 
-#### 5.推送
-> git push -u origin-business master
+#### 5.推送到自己的项目
+> git push -u origin-xxx master
 
 #### 6.删除模板的这个远端（将自己的远端再删除掉）
 > git remote remove origin-xxx
@@ -35,7 +32,7 @@
 > npm install <br/>
 
 注意：
-这里安装有点慢，可以采用 npm install -g 这个试试
+这里安装有点慢，可以采用 npm install -g 这个试试，如果没有安装npm，则请先安装Nodejs，具体方法不详述。如果npm install执行出现问题，见下面的五
 
 至此前端已经安装完毕
 ## 二、前端配置
@@ -63,7 +60,7 @@
 > npm config set registry https://registry.npm.taobao.org <br />
 > npm i
 
-上面是公司这边的使用情况。对于Ant Design Pro怎么进行学习，这里之前自己写了一篇文章作为入门即可。为了方便我把文档迁移到下面。如果嫌太长，可以去[这里](https://www.yuque.com/simonalong/jishu/war7do)
+上面是公司这边的使用情况。对于Ant Design Pro怎么进行学习，这里之前自己写了一篇文章作为入门即可。为了方便我把文档迁移到下面。如果嫌太长，可以去[项目说明文档](https://www.yuque.com/simonalong/jishu/war7do)
 <br/>
 <br/>
 <br/>
@@ -100,11 +97,11 @@
 // 其中最重要的是这里
 proxy: {
     // 下面是在遇到这种路径的时候进行替换
-  '/like/tina/api/v1/': {
+  '/businessName/': {
     // 自己的路径，其中8084是后端的端口号
-    target: 'http://localhost:8084/like/tina/api/v1/',
+    target: 'http://localhost:8080/',
     changeOrigin: true,
-    pathRewrite: { '^/like/tina/api/v1': '' },
+    pathRewrite: { '^/businessName': '' },
   },
 },
 ```
