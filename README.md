@@ -1,7 +1,6 @@
 
 <h1 align="center">ibo front base</h1>
 
-## 简介
 该项目来自业内流行的基于React的集大成框架Ant design pro。公司采用2.1.1版本作为基线版本，后续开发项目，请以当前项目为模板，新建自己的前端项目，禁止在该项目上直接开发业务。
 
 ## 使用方式
@@ -65,7 +64,9 @@
 > npm i
 
 上面是公司这边的使用情况。对于Ant Design Pro怎么进行学习，这里之前自己写了一篇文章作为入门即可。为了方便我把文档迁移到下面。如果嫌太长，可以去[这里](https://www.yuque.com/simonalong/jishu/war7do)
-
+<br/>
+<br/>
+<br/>
 # Ant Design Pro 说明
 
 前端采用蚂蚁金服的前端集成框架：ant-design-pro， 官网：[https://pro.ant.design/](https://pro.ant.design/)
