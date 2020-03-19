@@ -101,15 +101,15 @@ export default {
 
     // 获取配置列表
     *pageList({ payload }, { call, put }) {
-      console.log('cityModel.pageList 参数：');
-      console.log(JSON.stringify(payload));
+      // console.log('cityModel.pageList 参数：');
+      // console.log(JSON.stringify(payload));
 
       const values = {
         ...payload.pager,
         param: payload.searchParam,
       };
 
-      console.log(JSON.stringify(values));
+      // console.log(JSON.stringify(values));
       const response = yield call(pageList, values);
       // console.log('cityModel.pageList 结果：');
       yield put({
@@ -171,8 +171,8 @@ export default {
     },
 
     handlePageListResult(state, action) {
-      console.log('cityModel.handlePageListResult 返回的结果');
-      console.log(JSON.stringify(action));
+      // console.log('cityModel.handlePageListResult 返回的结果');
+      // console.log(JSON.stringify(action));
 
       const pl = action.payload;
 

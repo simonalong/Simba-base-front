@@ -57,7 +57,7 @@ export default {
   // add for transfer to umi
   plugins,
   // 这里设置自己的admin项目路径，执行npm run build就会打包到自己项目里面
-  // outputPath: '../like_server/like-admin/src/main/resources/static/',
+  // outputPath: '../xxx/xxx/src/main/resources/static/',
 
   env: {
     production: {

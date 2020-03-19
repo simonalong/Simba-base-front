@@ -150,7 +150,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-
+            
           />
         )}
       </FormItem>
@@ -164,7 +164,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-
+            
           />
         )}
       </FormItem>
@@ -513,7 +513,6 @@ class CityList extends PureComponent {
 
     form.validateFields((err, fieldsValue) => {
       if (err) return;
-
       for(let key in fieldsValue) {
         if(fieldsValue[key] === '') {
           delete fieldsValue[key]
