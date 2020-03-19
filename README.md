@@ -1,5 +1,5 @@
 
-<h1 align="center">ibo front base</h1>
+<h1 align="center">ibo-front-base</h1>
 
 该项目来自业内流行的基于React的集大成框架Ant design pro。公司采用2.1.1版本作为基线版本，后续开发前端项目，请以当前项目为模板进行新建自己的前端项目，禁止在该项目上直接开发业务（操作方式如下）。
 
