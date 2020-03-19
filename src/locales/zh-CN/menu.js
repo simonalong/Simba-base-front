@@ -90,4 +90,5 @@ export default {
   'menu.sequence':'发号器',
   'menu.sequence.snowflakeNamespace':'雪花发号器',
   'menu.sequence.snowflakeNamespaceManager':'命名空间管理',
+  'menu.cityList': '城市表',
 };

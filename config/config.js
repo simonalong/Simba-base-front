@@ -84,22 +84,10 @@ export default {
     '@antv/data-set': 'DataSet',
   },
   proxy: {
-    '/platform/': {
+    '/robot/': {
       // 自己的路径
-      target: 'http://localhost:8083/',
+      target: 'http://localhost:8084/',
       changeOrigin: true,
-    },
-    '/barrier/': {
-      // 自己的路径
-      target: 'http://localhost:8080/',
-      changeOrigin: true,
-      pathRewrite: { '^/barrier': '' },
-    },
-    '/sequence/': {
-      // 自己的路径
-      target: 'http://localhost:8080/',
-      changeOrigin: true,
-      pathRewrite: { '^/sequence': '' },
     },
   },
   ignoreMomentLocale: true,
