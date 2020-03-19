@@ -123,13 +123,13 @@ class BasicLayout extends React.PureComponent {
     const currRouterData = this.matchParamsPath(pathname);
 
     if (!currRouterData) {
-      return '格家网络';
+      return '指令集科技';
     }
     const pageName = formatMessage({
       id: currRouterData.locale || currRouterData.name,
       defaultMessage: currRouterData.name,
     });
-    return `${pageName} - Ant Design Pro`;
+    return `${pageName} - ISyscore`;
   };
 
   getLayoutStyle = () => {

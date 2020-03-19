@@ -8,7 +8,7 @@ const FooterView = () => (
     <GlobalFooter
       copyright={
         <Fragment>
-          2019 Created by 格家网络中间件稳定性平台
+          2020 Created by 指令集科技
         </Fragment>
       }
     />

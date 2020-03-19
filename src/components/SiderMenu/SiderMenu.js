@@ -69,7 +69,7 @@ export default class SiderMenu extends PureComponent {
           <Link to="/">
             {/* eslint-disable-next-line global-require */}
             <img src={require('../../assets/gegejia.png')} alt="logo" />
-            <h1>中间件平台</h1>
+            <h1>指令集科技</h1>
           </Link>
         </div>
         <Suspense fallback={<PageLoading />}>
