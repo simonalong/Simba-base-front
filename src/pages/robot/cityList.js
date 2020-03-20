@@ -150,7 +150,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-
+            
           />
         )}
       </FormItem>
@@ -164,7 +164,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-
+            
           />
         )}
       </FormItem>
@@ -268,10 +268,10 @@ class CityList extends PureComponent {
       title: '创建时间',
       dataIndex: 'createTime',
       width: '20%',
-      render: (text, record) => {
+      render: (text, record) => (
         // eslint-disable-next-line radix
-        return (<span>{moment(record.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>);
-      },
+        <span>{moment(record.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>
+      ),
     },
     {
       name: 'edit',
@@ -363,7 +363,7 @@ class CityList extends PureComponent {
         <Col span={6}>
           <Badge status="success" text="更新时间：" />
           {/* eslint-disable-next-line radix */}
-          <span>{moment(parseInt(record.updateTime)).format('YYYY-MM-DD HH:mm:ss')}</span>
+          <span>{moment(record.updateTime).format('YYYY-MM-DD HH:mm:ss')}</span>
         </Col>
         <Col span={6}>
           <Badge status="success" text="中心点经纬度：" />

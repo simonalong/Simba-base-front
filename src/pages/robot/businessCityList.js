@@ -256,7 +256,7 @@ class BusinessCityList extends PureComponent {
       width: '20%',
       render: (text, record) => (
         // eslint-disable-next-line radix
-        <span>{moment(parseInt(record.createTime)).format('YYYY-MM-DD HH:mm:ss')}</span>
+        <span>{moment(record.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>
       ),
     },
     {
@@ -349,7 +349,7 @@ class BusinessCityList extends PureComponent {
         <Col span={6}>
           <Badge status="success" text="更新时间：" />
           {/* eslint-disable-next-line radix */}
-          <span>{moment(parseInt(record.updateTime)).format('YYYY-MM-DD HH:mm:ss')}</span>
+          <span>{moment(record.updateTime).format('YYYY-MM-DD HH:mm:ss')}</span>
         </Col>
         <Col span={6}>
           <Badge status="success" text="中心点经纬度：" />
