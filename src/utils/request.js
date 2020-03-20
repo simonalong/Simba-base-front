@@ -62,97 +62,20 @@ const cachedSave = (response, hashcode) => {
  *
  * @param  {string} url        The URL we want to request
  * @param  {object} [option]   The options we want to pass to "fetch"
- * @param  {string} authCheck  backend will check the user'auth of url if value is "1"
  * @return {object}            An object containing either "data" or "err"
  */
-export default function request(url, option, authCheck) {
-  let optionFinal = option;
-  let urlFinal = url;
-  let uri = url;
-  let param;
-  const userInfo = getUserInfo();
-
-  // 如果不是portal应用，则转换为跳转路径，非直连环境下才考虑转换
-  // eslint-disable-next-line no-undef
-  if(PORTAL_ENV !== 'direct' && !url.startsWith("/platform/portal/") && !url.startsWith("/portal/")) {
-    let urlTem = url;
-    // 兼容旧的api访问方式（旧的api访问方式，前缀有个/platform）
-    if(urlTem.startsWith("/platform/")) {
-      // 去除/platform之后的字符串
-      urlTem = urlTem.substring("/platform/".length, urlTem.length);
-    }else{
-      // 去除 / 之后的字符串（默认为第一个字符为变量的名字）
-      // eslint-disable-next-line no-lonely-if
-      if (urlTem.startsWith("/")) {
-        urlTem = urlTem.substring("/".length, urlTem.length);
-      }
-    }
-
-    // 获取
-    const appName = urlTem.substring(0, urlTem.indexOf("/"));
-    uri = urlTem.substring(appName.length + 1);
-
-    // 拼接新的参数
-    param = {
-      // 应用名字
-      appName,
-      // 应用后面请求的url
-      url: uri,
-      // 操作该方式的用户
-      userName: userInfo.displayName,
-      // method 请求类型
-      // headers 对应处理的头部信息
-      // body 请求对应的参数
-      ...option
-    };
-
-    // 如果method没有填写，则采用默认的get
-    if(!param.method){
-      param={
-        method: "get",
-        ...param
-      }
-    }
-
-    urlFinal = "/platform/middleware";
-
-    optionFinal={
-      method: 'POST',
-      body: {
-        ...param,
-      },
-    }
-  }
-
-  if(url.startsWith("/portal")){
-    urlFinal = `/platform${url}`;
-  }
-
-  // eslint-disable-next-line no-undef
-  if(PORTAL_ENV !== 'direct'){
-    optionFinal={
-      headers: {
-        'userName': userInfo.displayName,
-        'currentPath': localStorage.getItem('currentPath'),
-        'authCheck': authCheck,
-      },
-      ...optionFinal,
-    };
-  }
-
-  console.log("optionTem");
-  console.log(JSON.stringify(urlFinal));
-  console.log(JSON.stringify(optionFinal));
+export default function request(url, option) {
 
   const options = {
     expirys: isAntdPro(),
-    ...optionFinal,
+    ...option,
   };
+
   /**
    * Produce fingerprints based on url and parameters
    * Maybe url has the same parameters
    */
-  const fingerprint = urlFinal + (options.body ? JSON.stringify(options.body) : '');
+  const fingerprint = url + (options.body ? JSON.stringify(options.body) : '');
   const hashcode = hash
     .sha256()
     .update(fingerprint)
@@ -198,7 +121,7 @@ export default function request(url, option, authCheck) {
       sessionStorage.removeItem(`${hashcode}:timestamp`);
     }
   }
-  return fetch(urlFinal, newOptions)
+  return fetch(url, newOptions)
     .then(checkStatus)
     .then(response => cachedSave(response, hashcode))
     .then(response => {

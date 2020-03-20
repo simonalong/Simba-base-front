@@ -270,8 +270,6 @@ class CityList extends PureComponent {
       width: '20%',
       render: (text, record) => {
         // eslint-disable-next-line radix
-        console.log("time");
-        console.log(JSON.stringify(record.createTime));
         return (<span>{moment(record.createTime).format('YYYY-MM-DD HH:mm:ss')}</span>);
       },
     },
