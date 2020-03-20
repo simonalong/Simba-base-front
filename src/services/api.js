@@ -1,8 +1,6 @@
 import { stringify } from 'qs';
 import request from '@/utils/request';
 
-const path = '/platform/portal';
-
 export async function queryProjectNotice() {
   return request('/api/project/notice');
 }
@@ -105,12 +103,13 @@ export async function updateFakeList(params) {
   });
 }
 
+// 登录
 export async function fakeAccountLogin(params) {
-  console.log('***********************请求参数*************************');
-  console.log(JSON.stringify(params));
-  return request(`/platform/portal/login/account`, {
+  return request(`/robot/login/account`, {
     method: 'POST',
-    body: params,
+    body: {
+      ...params,
+    },
   });
 }
 
