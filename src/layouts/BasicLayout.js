@@ -123,7 +123,7 @@ class BasicLayout extends React.PureComponent {
     const currRouterData = this.matchParamsPath(pathname);
 
     if (!currRouterData) {
-      return '指令集科技';
+      return '杭州指令集智能科技有限公司';
     }
     const pageName = formatMessage({
       id: currRouterData.locale || currRouterData.name,

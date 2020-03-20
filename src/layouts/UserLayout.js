@@ -24,7 +24,7 @@ const links = [
 
 const copyright = (
   <Fragment>
-    2020 Created by 指令集科技
+    2020 Created by 杭州指令集智能科技有限公司
   </Fragment>
 );
 
@@ -51,7 +51,7 @@ class UserLayout extends React.PureComponent {
               <Link to="/">
                 {/* eslint-disable-next-line global-require */}
                 <img alt="logo" className={styles.logo} src={require('../assets/gegejia.png')} />
-                <span className={styles.title}>指令集科技</span>
+                <span className={styles.title}>杭州指令集智能科技</span>
               </Link>
             </div>
             <div className={styles.divider} />
