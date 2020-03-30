@@ -216,9 +216,8 @@ class EditableCell extends PureComponent {
 }
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ businessCityModel, loading, authCheckModel }) => ({
+@connect(({ businessCityModel, loading}) => ({
   businessCityModel,
-  authCheckModel,
   loading: loading.models.businessCityModel,
 }))
 // @Form.create() 是一个注解，就简化了xxx = Form.create(xxx);export xxx
@@ -286,13 +285,9 @@ class BusinessCityList extends PureComponent {
 
   // 界面初始化函数
   componentDidMount() {
-    const { location, dispatch} = this.props;
+    const { location} = this.props;
     localStorage.setItem('currentPath', location.pathname);
     localStorage.setItem('appName', "robot");
-    dispatch({
-      type: 'authCheckModel/checkPage',
-      payload: {},
-    });
 
     // 获取页面的总个数
     this.getPageData(1);

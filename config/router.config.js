@@ -35,22 +35,6 @@ export default [
           },
         ],
       },
-      {
-        path: '/city',
-        name: 'cityList',
-        icon: 'lock',
-        // 直连阶段先删除，接入权限时候放开即可
-        // authority: ['admin', 'cityList'],
-        component: './robot/CityList',
-      },
-      {
-        path: '/businessCity',
-        name: 'businessCityList',
-        icon: 'lock',
-        // 直连阶段先删除，接入权限时候放开即可
-        // authority: ['admin', 'businessCityList'],
-        component: './robot/BusinessCityList',
-      },
       // 403
       {
         component: '403',
