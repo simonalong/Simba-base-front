@@ -23,17 +23,25 @@ export default [
         path: '/sequence',
         name: 'sequence',
         icon: 'fire',
-        authority: ['admin', 'snowflakeNamespaceList', 'snowflakeNamespaceManager'],
+        // authority: ['admin', 'snowflakeNamespaceList', 'snowflakeNamespaceManager'],
         routes: [
           // 演示用例
           {
             path: '/sequence/snowflakeNamespace',
             name: 'snowflakeNamespace',
             icon: 'setting',
-            authority: ['admin', 'snowflakeNamespaceList'],
+            // authority: ['admin', 'snowflakeNamespaceList'],
             component: './sequence/SnowflakeNamespaceList',
           },
         ],
+      },
+      {
+        path: '/city',
+        name: 'cityList',
+        icon: 'lock',
+        // 直连阶段先删除，接入权限时候放开即可
+        // authority: ['admin', 'cityList'],
+        component: './robot/CityList',
       },
       // 403
       {

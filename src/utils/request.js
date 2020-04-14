@@ -3,7 +3,6 @@ import { notification } from 'antd';
 import router from 'umi/router';
 import hash from 'hash.js';
 import { isAntdPro } from './utils';
-import {getUserInfo} from "@/utils/userInfo";
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -57,6 +56,15 @@ const cachedSave = (response, hashcode) => {
   return response;
 };
 
+const getCookie = (name) => {
+  const reg = new RegExp(`(^| )${  name  }=([^;]*)(;|$)`);
+  const arr = document.cookie.match(reg);
+  if (arr != null) {
+    return unescape(arr[2]);
+  }
+  return null;
+};
+
 /**
  * Requests a URL, returning a promise.
  *
@@ -83,7 +91,12 @@ export default function request(url, option) {
 
   const defaultOptions = {
     credentials: 'include',
+    "headers": {
+      // "X-Isyscore-Permission-Sid": getCookie("_ga")
+      "X-Isyscore-Permission-Sid": "95cd1e2f-702f-437b-ad1a-a10b6c70caee"
+    }
   };
+
   const newOptions = { ...defaultOptions, ...options };
   if (
     newOptions.method === 'POST' ||

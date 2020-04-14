@@ -80,23 +80,24 @@ export default class GlobalHeaderRight extends PureComponent {
       className = `${styles.right}  ${styles.dark}`;
     }
 
-    console.log('head-head');
-    console.log(JSON.stringify(currentUser));
-    return (
-      <div className={className}>
-          <Dropdown overlay={menu}>
-            <span className={`${styles.action} ${styles.account}`}>
-              <Avatar
-                size="small"
-                className={styles.avatar}
-                /* eslint-disable-next-line global-require */
-                src={require('../../assets/gegejia.png')}
-                alt="avatar"
-              />
-              {currentUser.displayName ? (<span>{currentUser.displayName}</span>):(<span />)}
-            </span>
-          </Dropdown>
-      </div>
-    );
+    // console.log('head-head');
+    // console.log(JSON.stringify(currentUser));
+    // return (
+    //   <div className={className}>
+    //       <Dropdown overlay={menu}>
+    //         <span className={`${styles.action} ${styles.account}`}>
+    //           <Avatar
+    //             size="small"
+    //             className={styles.avatar}
+    //             /* eslint-disable-next-line global-require */
+    //             src={require('../../assets/gegejia.png')}
+    //             alt="avatar"
+    //           />
+    //           {currentUser.displayName ? (<span>{currentUser.displayName}</span>):(<span />)}
+    //         </span>
+    //       </Dropdown>
+    //   </div>
+    // );
+    return (<span />);
   }
 }

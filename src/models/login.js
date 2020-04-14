@@ -15,22 +15,22 @@ export default {
 
   effects: {
     *login({ payload }, { call, put }) {
-      let response;
+
 
       // eslint-disable-next-line no-undef
-      if (PORTAL_ENV === 'direct') {
+      // if (PORTAL_ENV === 'direct') {
         // mock 数据
-        response={
+      const response={
           status:'ok',
           currentAuthority: '',
           accountInfo: {
-            cn: 'direct',
-            displayName: 'direct模式'
+            cn: '临时',
+            displayName: '临时'
           }
         };
-      }else{
-        response = yield call(fakeAccountLogin, payload);
-      }
+      // }else{
+      //   response = yield call(fakeAccountLogin, payload);
+      // }
 
       console.log('login');
       console.log(JSON.stringify(response));
