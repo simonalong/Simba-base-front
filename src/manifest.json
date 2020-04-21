@@ -7,10 +7,10 @@
   "background_color": "#001529",
   "icons": [
     {
-      "src": "../assets/gegejia.png",
+      "src": "../assets/logo.png",
       "sizes": "192x192"
     },{
-      "src": "../assets/gegejia.png",
+      "src": "../assets/logo.png",
       "sizes": "128x128"
     }
   ]

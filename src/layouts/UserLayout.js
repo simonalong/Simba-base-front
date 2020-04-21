@@ -50,7 +50,7 @@ class UserLayout extends React.PureComponent {
             <div className={styles.header}>
               <Link to="/">
                 {/* eslint-disable-next-line global-require */}
-                <img alt="logo" className={styles.logo} src={require('../assets/gegejia.png')} />
+                <img alt="logo" className={styles.logo} src={require('../assets/logo.png')} />
                 <span className={styles.title}>杭州指令集智能科技</span>
               </Link>
             </div>
