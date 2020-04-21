@@ -23,6 +23,7 @@ export function _onCreate() {
   app.model({ namespace: 'appGroupModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/barrier/appGroupModel.js').default) });
 app.model({ namespace: 'applicationModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/barrier/applicationModel.js').default) });
 app.model({ namespace: 'tagModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/barrier/tagModel.js').default) });
+app.model({ namespace: 'authModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/common/authModel.js').default) });
 app.model({ namespace: 'global', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/global.js').default) });
 app.model({ namespace: 'juliaSwitchGroupModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/julia/juliaSwitchGroupModel.js').default) });
 app.model({ namespace: 'juliaSwitchModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/julia/juliaSwitchModel.js').default) });
