@@ -1,9 +1,8 @@
 import {
-  pageList,
+  getPage,
   add,
   deleteData,
-  update,
-  pageCount
+  update
 } from '@/services/robot/cityApi';
 
 export default {
@@ -100,8 +99,8 @@ export default {
     },
 
     // 获取配置列表
-    *pageList({ payload }, { call, put }) {
-      // console.log('cityModel.pageList 参数：');
+    *getPage({ payload }, { call, put }) {
+      // console.log('cityModel.getPage 参数：');
       // console.log(JSON.stringify(payload));
 
       const values = {
@@ -110,34 +109,12 @@ export default {
       };
 
       // console.log(JSON.stringify(values));
-      const response = yield call(pageList, values);
+      const response = yield call(getPage, values);
       yield put({
-        type: 'handlePageListResult',
+        type: 'handleGetPageResult',
         payload: {
           response,
           ...payload,
-        },
-      });
-    },
-
-    *pageCount({ payload }, { call, put }) {
-      // console.log('cityModel.pageCount 参数：');
-      // console.log(JSON.stringify(payload));
-
-      const params =
-        payload === undefined || payload.searchParam === undefined ? {} : payload.searchParam;
-      const pager = payload === undefined || payload.pager === undefined ? {} : payload.pager;
-      const values = {
-        ...params,
-        ...pager,
-      };
-
-      // console.log(JSON.stringify(values));
-      const response = yield call(pageCount, values);
-      yield put({
-        type: 'handleCountResult',
-        payload: {
-          response,
         },
       });
     },
@@ -158,19 +135,8 @@ export default {
       };
     },
 
-    handleCountResult(state, action) {
-      console.log('cityModel.handleCountResult 返回的结果');
-      console.log(JSON.stringify(action.payload));
-
-      const pl = action.payload;
-      return {
-        ...state,
-        totalNumber: pl.response.data,
-      };
-    },
-
-    handlePageListResult(state, action) {
-      console.log('cityModel.handlePageListResult 返回的结果');
+    handleGetPageResult(state, action) {
+      console.log('cityModel.handleGetPageResult 返回的结果');
       console.log(JSON.stringify(action));
 
       const pl = action.payload;
@@ -181,7 +147,8 @@ export default {
           ...pl.pager,
           pageNo:pl.pager.pageNo
         },
-        tableList: pl.response.data,
+        tableList: pl.response.data.dataList,
+        totalNumber: pl.response.data.totalNum,
         searchParam: pl.searchParam,
         tableLoading: false
       };

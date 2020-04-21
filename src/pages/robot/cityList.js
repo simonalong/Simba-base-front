@@ -22,6 +22,7 @@ import moment from 'moment';
 import styles from './CityList.less';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import {getUserInfo} from "@/utils/userInfo";
+import { haveAuthority } from '@/utils/authority';
 
 const { RangePicker } = DatePicker;
 const EditableContext = React.createContext();
@@ -150,7 +151,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-            
+
           />
         )}
       </FormItem>
@@ -164,7 +165,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-            
+
           />
         )}
       </FormItem>
@@ -230,8 +231,9 @@ class EditableCell extends PureComponent {
 }
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ cityModel, loading}) => ({
+@connect(({ cityModel, loading, authModel}) => ({
   cityModel,
+  authModel,
   loading: loading.models.cityModel,
 }))
 // @Form.create() 是一个注解，就简化了xxx = Form.create(xxx);export xxx
@@ -299,12 +301,19 @@ class CityList extends PureComponent {
 
   // 界面初始化函数
   componentDidMount() {
-    const { location} = this.props;
-    localStorage.setItem('currentPath', location.pathname);
-    localStorage.setItem('appName', "robot");
+    // 获取权限
+    this.getAuth();
 
     // 获取页面的总个数
     this.getPageData(1);
+  }
+
+  // 刷新用户界面的权限
+  getAuth() {
+    const {dispatch} = this.props;
+    dispatch({
+      type: 'authModel/getAuthOfUser',
+    });
   }
 
   getPageData(pageNo, searchParamInput) {
@@ -331,16 +340,8 @@ class CityList extends PureComponent {
     console.log(JSON.stringify(pagerFinal));
     console.log(JSON.stringify(param));
 
-    // 获取页面的总个数
     dispatch({
-      type: 'cityModel/pageCount',
-      payload: {
-        searchParam: param,
-      },
-    });
-
-    dispatch({
-      type: 'cityModel/pageList',
+      type: 'cityModel/getPage',
       payload: {
         pager: pagerFinal,
         searchParam: param,
@@ -522,6 +523,19 @@ class CityList extends PureComponent {
     });
   };
 
+  showButton=()=>{
+    if(haveAuthority("add_city")){
+      return (
+        <Col md={2} sm={24}>
+          <Button icon="plus" type="primary" onClick={this.showAddModal}>
+            新建
+          </Button>
+        </Col>
+      );
+    }
+    return (<span />);
+  };
+
   // 加载搜索输入框和搜索按钮
   renderSearchForm = () => {
     const {
@@ -559,11 +573,7 @@ class CityList extends PureComponent {
               </Button>
             </span>
           </Col>
-          <Col md={2} sm={24}>
-            <Button icon="plus" type="primary" onClick={this.showAddModal}>
-              新建
-            </Button>
-          </Col>
+          {this.showButton()}
         </Row>
       </Form>
     );

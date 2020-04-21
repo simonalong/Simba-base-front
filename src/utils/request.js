@@ -65,6 +65,16 @@ const getCookie = (name) => {
   return null;
 };
 
+function download(blobData, forDownLoadFileName) {
+  const aLink = document.createElement('a');
+  document.body.appendChild(aLink);
+  aLink.style.display = 'none';
+  aLink.href = window.URL.createObjectURL(blobData);
+  aLink.setAttribute('download', forDownLoadFileName);
+  aLink.click();
+  document.body.removeChild(aLink);
+}
+
 /**
  * Requests a URL, returning a promise.
  *
@@ -92,8 +102,9 @@ export default function request(url, option) {
   const defaultOptions = {
     credentials: 'include',
     "headers": {
+      // todo 这里待到测试环境时候放开
       // "X-Isyscore-Permission-Sid": getCookie("_ga")
-      "X-Isyscore-Permission-Sid": "95cd1e2f-702f-437b-ad1a-a10b6c70caee"
+      "X-Isyscore-Permission-Sid": "16706543-855e-48c8-9e13-cd876e09b235"
     }
   };
 
@@ -134,6 +145,16 @@ export default function request(url, option) {
       sessionStorage.removeItem(`${hashcode}:timestamp`);
     }
   }
+
+  if (url.includes('exportToExcel')) {
+    const { excelFileName } = options.body;
+
+    return fetch(url, newOptions)
+      .then(response => response.blob())
+      .then(blobData => {
+        download(blobData, excelFileName);
+      });
+  }
   return fetch(url, newOptions)
     .then(checkStatus)
     .then(response => cachedSave(response, hashcode))
@@ -149,10 +170,12 @@ export default function request(url, option) {
       const status = e.name;
       if (status === 401) {
         // @HACK
-        /* eslint-disable no-underscore-dangle */
-        window.g_app._store.dispatch({
-          type: 'login/logout',
-        });
+        // /* eslint-disable no-underscore-dangle */
+        // window.g_app._store.dispatch({
+        //   type: 'login/logout',
+        // });
+        // todo 这里待去测试环境验证
+        window.parent.postMessage('loginTimeout', '*');
         return;
       }
       // environment should not be used

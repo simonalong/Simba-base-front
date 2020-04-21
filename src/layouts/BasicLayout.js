@@ -66,6 +66,9 @@ class BasicLayout extends React.PureComponent {
       type: 'user/fetchCurrent',
     });
     dispatch({
+      type: 'authModel/getAuthOfUser',
+    });
+    dispatch({
       type: 'setting/getSetting',
     });
     dispatch({

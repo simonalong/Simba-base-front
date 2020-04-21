@@ -33,21 +33,10 @@ export async function update(params) {
   });
 }
 
-export async function pageCount(params) {
-  console.log('cityApi.pageCount 发送的参数');
-  console.log(JSON.stringify(params));
-  return request(`${path}/count`, {
-    method: 'POST',
-    body: {
-      ...params,
-    },
-  });
-}
-
-export async function pageList(params) {
+export async function getPage(params) {
   console.log('cityApi.pageList 发送的参数');
   console.log(JSON.stringify(params));
-  return request(`${path}/pageList`, {
+  return request(`${path}/getPage`, {
     method: 'POST',
     body: {
       ...params,

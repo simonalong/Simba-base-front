@@ -32,10 +32,6 @@ export function haveAuthority(auth) {
     return false;
   }
 
-  // 如果是管理员，则不需要判断
-  if (currentAuth.includes("admin")) {
-    return true;
-  }
   return currentAuth.includes(auth);
 }
 
