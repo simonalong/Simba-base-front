@@ -20,15 +20,15 @@ export default [
       { path: '/', redirect: '/dashboard/analysis' },
       // 演示使用
       {
-        path: '/sequence',
-        name: 'sequence',
+        path: '/showTest',
+        name: 'showTest',
         icon: 'fire',
         // authority: ['admin', 'snowflakeNamespaceList', 'snowflakeNamespaceManager'],
         routes: [
           // 演示用例
           {
-            path: '/sequence/snowflakeNamespace',
-            name: 'snowflakeNamespace',
+            path: '/showTest/DemoList',
+            name: 'DemoList',
             icon: 'setting',
             // authority: ['admin', 'snowflakeNamespaceList'],
             component: './sequence/SnowflakeNamespaceList',
@@ -40,7 +40,7 @@ export default [
         name: 'cityList',
         icon: 'lock',
         // 直连阶段先删除，接入权限时候放开即可
-        // authority: ['admin', 'cityList'],
+        authority: ['cityList1'],
         component: './robot/CityList',
       },
       // 403

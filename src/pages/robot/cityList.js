@@ -151,7 +151,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-
+            
           />
         )}
       </FormItem>
@@ -165,7 +165,7 @@ const EditForm = Form.create()(props => {
             showTime
             format="YYYY-MM-DD HH:mm:ss"
             placeholder="Select Time"
-
+            
           />
         )}
       </FormItem>
@@ -231,7 +231,7 @@ class EditableCell extends PureComponent {
 }
 
 /* eslint react/no-multi-comp:0 */
-@connect(({ cityModel, loading, authModel}) => ({
+@connect(({ cityModel, authModel, loading}) => ({
   cityModel,
   authModel,
   loading: loading.models.cityModel,
@@ -340,6 +340,7 @@ class CityList extends PureComponent {
     console.log(JSON.stringify(pagerFinal));
     console.log(JSON.stringify(param));
 
+    // 获取页面的总个数
     dispatch({
       type: 'cityModel/getPage',
       payload: {
@@ -523,19 +524,6 @@ class CityList extends PureComponent {
     });
   };
 
-  showButton=()=>{
-    if(haveAuthority("add_city")){
-      return (
-        <Col md={2} sm={24}>
-          <Button icon="plus" type="primary" onClick={this.showAddModal}>
-            新建
-          </Button>
-        </Col>
-      );
-    }
-    return (<span />);
-  };
-
   // 加载搜索输入框和搜索按钮
   renderSearchForm = () => {
     const {
@@ -573,7 +561,11 @@ class CityList extends PureComponent {
               </Button>
             </span>
           </Col>
-          {this.showButton()}
+          <Col md={2} sm={24}>
+            <Button icon="plus" type="primary" onClick={this.showAddModal}>
+              新建
+            </Button>
+          </Col>
         </Row>
       </Form>
     );

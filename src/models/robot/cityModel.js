@@ -16,7 +16,7 @@ export default {
     searchParam: {},
     totalNumber: 0,
     pager: {
-      pageNo: 1,
+      pageNo: 0,
       pageSize: 20,
     },
   },
@@ -37,7 +37,7 @@ export default {
         type: 'pageList',
         payload: {
           pager: {
-            pageNo: 1,
+            pageNo: 0,
             pageSize: 20,
           },
         },

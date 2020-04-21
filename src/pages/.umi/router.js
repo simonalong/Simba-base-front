@@ -113,24 +113,38 @@ const routes = [
         exact: true,
       },
       {
+        path: '/showTest',
+        name: 'showTest',
+        icon: 'fire',
+        routes: [
+          {
+            path: '/showTest/DemoList',
+            name: 'DemoList',
+            icon: 'setting',
+            component: __IS_BROWSER
+              ? _dvaDynamic({
+                  component: () => import('../sequence/SnowflakeNamespaceList'),
+                  LoadingComponent: require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/components/PageLoading/index')
+                    .default,
+                })
+              : require('../sequence/SnowflakeNamespaceList').default,
+            exact: true,
+          },
+          {
+            component: () =>
+              React.createElement(
+                require('/Users/zhouzhenyong/project/isyscore/isc-front-base/node_modules/umi-build-dev/lib/plugins/404/NotFound.js')
+                  .default,
+                { pagesPath: 'src/pages', hasRoutesInConfig: true },
+              ),
+          },
+        ],
+      },
+      {
         path: '/city',
         name: 'cityList',
         icon: 'lock',
-        authority: ['cityList'],
-        component: __IS_BROWSER
-          ? _dvaDynamic({
-              component: () => import('../robot/CityList'),
-              LoadingComponent: require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/components/PageLoading/index')
-                .default,
-            })
-          : require('../robot/CityList').default,
-        exact: true,
-      },
-      {
-        path: '/city2',
-        name: 'city2List',
-        icon: 'lock',
-        authority: ['cityList2'],
+        authority: ['cityList1'],
         component: __IS_BROWSER
           ? _dvaDynamic({
               component: () => import('../robot/CityList'),

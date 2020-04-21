@@ -86,7 +86,7 @@ export default {
   proxy: {
     '/robot/': {
       // 自己的路径
-      target: 'http://localhost:8084/',
+      target: 'http://localhost:8094/',
       changeOrigin: true,
     },
   },

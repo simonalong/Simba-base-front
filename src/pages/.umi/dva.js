@@ -44,7 +44,6 @@ app.model({ namespace: 'middlewareResourceItemModel', ...(require('/Users/zhouzh
 app.model({ namespace: 'middlewareSystemModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/portal/middlewareSystemModel.js').default) });
 app.model({ namespace: 'resourceAuthModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/portal/resourceAuthModel.js').default) });
 app.model({ namespace: 'project', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/project.js').default) });
-app.model({ namespace: 'businessCityModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/robot/businessCityModel.js').default) });
 app.model({ namespace: 'cityModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/robot/cityModel.js').default) });
 app.model({ namespace: 'snowflakeNamespaceManagerModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/sequence/snowflakeNamespaceManagerModel.js').default) });
 app.model({ namespace: 'snowflakeNamespaceModel', ...(require('/Users/zhouzhenyong/project/isyscore/isc-front-base/src/models/sequence/snowflakeNamespaceModel.js').default) });

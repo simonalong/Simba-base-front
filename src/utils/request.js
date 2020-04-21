@@ -104,7 +104,7 @@ export default function request(url, option) {
     "headers": {
       // todo 这里待到测试环境时候放开
       // "X-Isyscore-Permission-Sid": getCookie("_ga")
-      "X-Isyscore-Permission-Sid": "16706543-855e-48c8-9e13-cd876e09b235"
+      "X-Isyscore-Permission-Sid": "1f2cd53f-a59b-4ab6-96e4-fac48b5d025c"
     }
   };
 
